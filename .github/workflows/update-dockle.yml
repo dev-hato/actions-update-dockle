@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  create-release:
+  update-dockle:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.2
