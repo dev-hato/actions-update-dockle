@@ -1,0 +1,33 @@
+name: 'update-dockle'
+author: 'dev-hato Development Team'
+description: 'Dockleをアップデートする'
+inputs:
+  github-token: # id of input
+    description: 'GITHUB_TOKEN'
+    required: true
+  repo-name:
+    description: 'Repository name'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Get latest dockle version
+      uses: actions/github-script@v6.1.0
+      id: get_latest_dockle_version
+      with:
+        github-token: ${{inputs.github-token}}
+        result-encoding: string
+        script: |
+          const release = await github.rest.repos.getLatestRelease({
+            owner: 'goodwithtech',
+            repo: 'dockle'
+          });
+          return release.data.tag_name.replace('v', '');
+    - shell: bash
+      run: echo '${{ steps.get_latest_dockle_version.outputs.result }}' > .dockle-version
+    - uses: dev-hato/actions-diff-pr-management@v0.0.10
+      with:
+        github-token: ${{inputs.github-token}}
+        branch-name-prefix: update-dockle
+        pr-title-prefix: Dockleをアップデートしてあげたよ！
+        repo-name: ${{inputs.repo-name}}

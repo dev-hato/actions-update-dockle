@@ -1,0 +1,21 @@
+---
+name: update-dockle
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: ./
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          repo-name: ${{ github.event.pull_request.head.repo.full_name }}
