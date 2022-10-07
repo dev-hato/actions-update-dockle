@@ -12,7 +12,7 @@ runs:
   using: "composite"
   steps:
     - name: Get latest dockle version
-      uses: actions/github-script@v6.3.0
+      uses: actions/github-script@v6.3.1
       id: get_latest_dockle_version
       with:
         github-token: ${{inputs.github-token}}
