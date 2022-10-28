@@ -22,7 +22,7 @@ runs:
             owner: 'goodwithtech',
             repo: 'dockle'
           });
-          return release.data.tag_name.replace('v', '');
+          return release.data.tag_name.replace('v', 'vvvvv');
     - shell: bash
       run: echo '${{ steps.get_latest_dockle_version.outputs.result }}' > .dockle-version
     - uses: dev-hato/actions-diff-pr-management@separate_script
