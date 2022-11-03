@@ -18,11 +18,8 @@ runs:
         github-token: ${{inputs.github-token}}
         result-encoding: string
         script: |
-          const release = await github.rest.repos.getLatestRelease({
-            owner: 'goodwithtech',
-            repo: 'dockle'
-          });
-          return release.data.tag_name.replace('v', '');
+          const script = require('${{ github.action_path }}/scripts/action/get_latest_dockle_version.js')
+          return await script({github})
     - shell: bash
       run: echo '${{ steps.get_latest_dockle_version.outputs.result }}' > .dockle-version
     - uses: dev-hato/actions-diff-pr-management@v1.0.8
