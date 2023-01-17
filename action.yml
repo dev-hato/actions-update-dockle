@@ -19,7 +19,7 @@ runs:
           return await script({github})
     - shell: bash
       run: echo '${{ steps.get_latest_dockle_version.outputs.result }}' > .dockle-version
-    - uses: dev-hato/actions-diff-pr-management@v1.1.1
+    - uses: dev-hato/actions-diff-pr-management@v1.1.2
       with:
         github-token: ${{inputs.github-token}}
         branch-name-prefix: update-dockle
