@@ -1,6 +1,5 @@
 ---
 name: update-dockle
-
 on:
   pull_request:
     types:
@@ -11,7 +10,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   update-dockle:
     runs-on: ubuntu-latest
@@ -23,7 +21,6 @@ jobs:
       - uses: ./
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
