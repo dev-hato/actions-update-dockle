@@ -43,7 +43,7 @@ jobs:
       - uses: actions/setup-node@v3.8.1
         with:
           cache: npm
-      - run: bash "${GITHUB_WORKSPACE}/scripts/super-linter/build/set_path.sh"
+      - run: bash "${GITHUB_WORKSPACE}/scripts/super_linter/build/set_path.sh"
       ################################
       # Run Linter against code base #
       ################################
