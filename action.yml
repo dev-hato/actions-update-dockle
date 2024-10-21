@@ -16,8 +16,8 @@ runs:
         github-token: ${{inputs.github-token}}
         result-encoding: string
         script: |
-          const script = require('${{ github.action_path }}/scripts/action/get_latest_dockle_version.js')
-          return await script({github})
+          const {script} = require('${{ github.action_path }}/dist/get_latest_dockle_version.js')
+          return await script(github)
     - shell: bash
       if: github.event_name != 'pull_request' || github.event.action != 'closed'
       run: echo '${{ steps.get_latest_dockle_version.outputs.result }}' > .dockle-version
