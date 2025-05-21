@@ -81,7 +81,6 @@ jobs:
           VALIDATE_SHELL_SHFMT: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_TYPESCRIPT_PRETTIER: false
-          VALIDATE_YAML: false
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
