@@ -31,8 +31,5 @@
     "ignore": [
       "dist/"
     ]
-  },
-  "overrides": {
-    "undici": "7.18.2"
   }
 }
