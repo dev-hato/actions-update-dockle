@@ -34,7 +34,7 @@ jobs:
       - if: github.event_name != 'pull_request' || github.event.action != 'closed'
         run: npm ci
       - if: github.event_name != 'pull_request' || github.event.action != 'closed'
-        run: tsc
+        run: npx --no-install tsc
       # 修正PRの操作はpushとフォーク以外からのpull_requestのみで行う。それ以外のイベントでは差分の検証のみを行うため、書き込み用のトークンは発行しない
       # フォークからのPRでは、修正PRを操作せずに差分の検証のみを行う
       - name: Generate a token
